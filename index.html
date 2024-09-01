@@ -1,0 +1,40 @@
+<!-- index.html (updated) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://db.onlinewebfonts.com/c/53f9cfba1dd5f4834ce9e83579f1d5a9?family=Albertus+Nova+W07+Bold" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 align="center">To-Do List</h1>
+        
+        <div class="input-controls">
+            <input type="text" id="new-task" placeholder="Add new task">
+            <button id="add-task">Add Task</button>
+            <button id="clear-all">Clear All</button>
+        </div>
+    </div>
+
+    <div class="List">
+        <div class="desktop-controls">
+            <ul id="todo-list">
+                <!-- List items will be generated dynamically -->
+            </ul>
+        </div>
+
+        <div class="mobile-controls">
+            <ul id="todo-list-mobile">
+                <!-- List items will be generated dynamically -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

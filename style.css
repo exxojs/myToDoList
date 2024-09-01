@@ -1,0 +1,501 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    background-image: url(SteamVR_Dota_Radiant_1440.png);
+    background-position-y: center;
+    background-position-x:left;
+    background-size:210%;
+    padding-top: 40px;
+}
+
+h1{
+    font-family: "Albertus Nova W07 Bold";
+    color: #e2dace;
+    -webkit-text-stroke: rgb(22, 22, 22) 2px;
+    font-size: 70px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+@import url(https://db.onlinewebfonts.com/c/53f9cfba1dd5f4834ce9e83579f1d5a9?family=Albertus+Nova+W07+Bold);
+@font-face {
+    font-family: "Albertus Nova W07 Bold";
+    src: url("https://db.onlinewebfonts.com/t/53f9cfba1dd5f4834ce9e83579f1d5a9.eot");
+    src: url("https://db.onlinewebfonts.com/t/53f9cfba1dd5f4834ce9e83579f1d5a9.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/53f9cfba1dd5f4834ce9e83579f1d5a9.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/53f9cfba1dd5f4834ce9e83579f1d5a9.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/53f9cfba1dd5f4834ce9e83579f1d5a9.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/53f9cfba1dd5f4834ce9e83579f1d5a9.svg#Albertus Nova W07 Bold")format("svg");
+}
+/*===============================================*/
+.container {
+    margin: 30px auto;
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: #ffffff1e;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
+  .container:hover {
+    background-color: #ffffff1e;
+    box-shadow: rgba(201, 46, 69, 0.048) 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
+    color: black;
+  }
+
+  #new-task{
+    color: #000000;
+  }
+/*===============================================*/
+
+/*===============================================*/
+/* List container styles */
+.List {
+    margin: 12px auto;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+  }
+  
+  .List:hover {
+    backdrop-filter: blur(20px);
+  }
+  
+  .List:hover * {
+    backdrop-filter: blur(20px);
+  }
+  
+  /* Todo list styles */
+  #todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #todo-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s ease;
+    background-color: white;
+    border-radius: 4px;
+    margin: 16px 16px 16px 0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  #todo-list li:hover {
+    font-size: 12px;
+    color: black;
+    animation: 0.3s ease-in;
+  }
+  
+  #todo-list li:active {
+    background-color: #e5e5e5;
+    transform: translateY(2px);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  #todo-list li:last-child {
+    border-bottom: none;
+  }
+  /* Button styles */
+  #todo-list li button {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  #todo-list li button:hover {
+    background-color: #cc0000;
+    animation: pulse 0.5s ease-in-out;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+/*===============================================*/
+
+/*===============================================*/
+.input-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.input-controls > * {
+    margin: 0 5px;
+}
+
+.input-controls > *:first-child {
+    margin-left: 0;
+}
+
+.input-controls > *:last-child {
+    margin-right: 0;
+}
+/*===============================================*/
+
+/*===============================================*/
+#new-task {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+}
+
+#add-task {
+    padding: 10px;
+    background: inherit;
+    color: #fff;
+    border: 2px solid rgb(110, 110, 110);
+    border-radius: 5px;
+    font-family: "Albertus Nova W07 Bold";
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: -1px -3px 41px 0px rgba(0,0,0,0.75);
+}
+
+#add-task:hover {
+    border: 2px solid #119100;
+    color: #1beb00;
+}
+/*===============================================*/
+
+/*===============================================*/
+#clear-all {
+    padding: 10px;
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgb(110, 110, 110);
+    border-radius: 5px;
+    font-family: "Albertus Nova W07 Bold";
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: -1px -3px 41px 0px rgba(0,0,0,0.75);
+}
+
+#clear-all:hover {
+    border: 2px solid rgb(179, 0, 0);
+    color: rgb(255, 0, 0)
+}
+/*===============================================*/
+
+/*===============================================*/
+.dragging {
+    opacity: 0.5;
+}
+
+.drop-placeholder {
+    height: 20px;
+    background-color: #ccc;
+    border: 1px dashed #666;
+    margin: 10px;
+}
+
+.drop-placeholder:hover {
+    background-color: #aaa;
+}
+/*===============================================*/
+
+/*===============================================*/
+.mobile-controls {
+    display: none;
+}
+
+.container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Make the container more responsive */
+@media only screen and (max-width: 768px) {
+    .container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+}
+
+/*===============================================*/
+
+/*===============================================*/
+/* List container styles */
+.List {
+    margin: 12px auto;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.List:hover {
+    backdrop-filter: blur(20px);
+}
+
+.List:hover * {
+    backdrop-filter: blur(20px);
+}
+
+/* Todo list styles */
+#todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#todo-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s ease;
+    background-color: white;
+    border-radius: 4px;
+    margin: 16px 16px 16px 0;
+}
+
+#todo-list li:hover {
+    font-size: 12px;
+    color: black;
+    animation: 0.3s ease-in;
+}
+
+#todo-list li:active {
+    background-color: #e5e5e5;
+    transform: translateY(2px);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#todo-list li:last-child {
+    border-bottom: none;
+}
+/*===============================================*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #070042;
+}
+
+/*===============================================*/
+
+
+/* Make the container more responsive */
+@media only screen and (max-width: 768px) {
+    .container {
+        margin: 20px auto;
+        padding: 15px;
+        max-width: 300px;
+        
+    }
+    body{
+        background-image: url(yurnero-the-juggernaut-dota-2-iphone-yti90diaxnvgx34b.jpg);
+        background-position-y: top;
+        background-position-x:center;
+        background-size:110%;
+    }
+}
+
+/*===============================================*/
+
+/*===============================================*/
+/* List container styles */
+.List {
+    margin: 12px auto;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.List:hover {
+    backdrop-filter: blur(20px);
+}
+
+.List:hover * {
+    backdrop-filter: blur(20px);
+}
+
+/* Todo list styles */
+#todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#todo-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s ease;
+    background-color: white;
+    border-radius: 4px;
+    margin: 16px 16px 16px 0;
+}
+
+#todo-list li:hover {
+    font-size: 12px;
+    color: black;
+    animation: 0.3s ease-in;
+}
+
+#todo-list li:active {
+    background-color: #e5e5e5;
+    transform: translateY(2px);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#todo-list li:last-child {
+    border-bottom: none;
+}
+
+/* Make the todo list items more responsive */
+@media only screen and (max-width: 768px) {
+    #todo-list li {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px 0;
+    }
+    #todo-list li button {
+        margin-left: 10px;
+    }
+}
+
+/* Button styles */
+#todo-list li button {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#todo-list li button:hover {
+    background-color: #cc0000;
+    animation: pulse 0.5s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*===============================================*/
+
+/*===============================================*/
+.input-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.input-controls > * {
+    margin: 0 5px;
+}
+
+.input-controls > *:first-child {
+    margin-left: 0;
+}
+
+.input-controls > *:last-child {
+    margin-right: 0;
+}
+
+/* Make the input controls more responsive */
+@media only screen and (max-width: 768px) {
+    .input-controls {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .input-controls > * {
+        margin: 0 2px;
+        padding: 5px;
+    }
+    #new-task {
+        flex: 1;
+        padding: 5px;
+        margin-right: 2px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    #add-task {
+        padding: 5px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #clear-all {
+        padding: 5px;
+        background-color: #ff0000;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
