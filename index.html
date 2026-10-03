@@ -1,40 +1,85 @@
-<!-- index.html (updated) -->
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://db.onlinewebfonts.com/c/53f9cfba1dd5f4834ce9e83579f1d5a9?family=Albertus+Nova+W07+Bold" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#110d0d">
+  <title>Ancient — Quest Board</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1 align="center">To-Do List</h1>
-        
-        <div class="input-controls">
-            <input type="text" id="new-task" placeholder="Add new task">
-            <button id="add-task">Add Task</button>
-            <button id="clear-all">Clear All</button>
-        </div>
+  <div class="scene" aria-hidden="true"></div>
+  <div class="shade" aria-hidden="true"></div>
+  <span class="ember one" aria-hidden="true"></span><span class="ember two" aria-hidden="true"></span><span class="ember three" aria-hidden="true"></span>
+  <header class="shell topbar">
+    <div class="brand">
+      <div class="crest" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 20 6.5v10L12 22 4 16.5v-10L12 2Z" stroke="currentColor" stroke-width="1.5"/><path d="m12 5 1.7 5.2L19 12l-5.3 1.8L12 19l-1.7-5.2L5 12l5.3-1.8L12 5Z" fill="currentColor"/></svg>
+      </div>
+      <div><span class="brand-name">ANCIENT</span><span class="brand-sub">PERSONAL QUEST BOARD</span></div>
     </div>
-
-    <div class="List">
-        <div class="desktop-controls">
-            <ul id="todo-list">
-                <!-- List items will be generated dynamically -->
-            </ul>
+    <div class="top-meta"><span class="status-label"><i class="status-dot"></i>Battle-ready</span><span id="dateLabel"></span><span class="avatar" aria-label="Player">P1</span></div>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">The battle for your day</div>
+      <h1>Make every move <span>count.</span></h1>
+      <p class="hero-copy">Your next objective is waiting. Rank the quests, watch your deadlines, and push toward the Ancient.</p>
+      <div class="hero-aside"><div class="rune"><span>✦</span></div><span><strong>Radiant focus</strong><br><span style="color:#a99a90">One quest at a time.</span></span></div>
+    </section>
+    <section class="dashboard" aria-label="Quest dashboard">
+      <section class="board" aria-labelledby="boardTitle">
+        <div class="board-head">
+          <div><h2 class="section-title" id="boardTitle">Quest stack</h2><div class="section-caption"><span id="taskCount">0</span> active objectives · Drag to rearrange</div></div>
+          <button class="button primary" id="addButton" type="button"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.7"/></svg>New quest</button>
         </div>
-
-        <div class="mobile-controls">
-            <ul id="todo-list-mobile">
-                <!-- List items will be generated dynamically -->
-            </ul>
+        <div class="board-tools">
+          <div class="filters" role="group" aria-label="Filter quests">
+            <button class="filter active" data-filter="all" type="button">All <span class="count" id="allCount">0</span></button>
+            <button class="filter" data-filter="active" type="button">Active</button>
+            <button class="filter" data-filter="done" type="button">Completed</button>
+          </div>
+          <div class="tool-actions"><button class="sort-button" id="sortButton" type="button">↕ Rank by urgency</button></div>
         </div>
-    </div>
+        <div class="task-list" id="taskList" aria-live="polite"></div>
+        <div class="empty-state" id="emptyState"><strong>All clear, hero.</strong>No quests in this view. Add an objective to begin.</div>
+      </section>
+      <aside class="side-column">
+        <section class="side-card">
+          <div class="side-heading"><h2>Battle progress</h2><span>THIS SESSION</span></div>
+          <div class="progress-row"><span class="progress-number" id="progressNumber">0%</span><span class="progress-label" id="progressLabel">0 / 0 quests complete</span></div>
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+          <div class="progress-foot"><span>Ancient health</span><span id="remainingLabel">Awaiting first victory</span></div>
+        </section>
+        <section class="side-card">
+          <div class="side-heading"><h2>On the horizon</h2><span>UP NEXT</span></div>
+          <div id="focusList"></div>
+        </section>
+        <section class="side-card quote-card">
+          <div class="quote-kicker">Wisdom of the Ancients</div>
+          <div class="quote-text" id="quoteText">A steady hand wins the longest game.</div>
+        </section>
+      </aside>
+    </section>
+  </main>
+  <footer class="shell footer">
+      <span class="footer-credit">created by: <a href="https://steamcommunity.com/id/exxojs/">ARAXYS</a> <img src="[CITYPNG.COM]HD Dota 2 Official Logo PNG - 4000x4000.png" alt="Dota 2 logo" loading="lazy"></span>
+  </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    <script src="index.js"></script>
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <form class="modal" id="taskForm">
+      <div class="modal-head"><div><h2 id="modalTitle">New objective</h2><p>Set your target and prepare to execute.</p></div><button class="close-modal" id="closeModal" type="button" aria-label="Close">×</button></div>
+      <div class="field"><label for="taskName">Quest name</label><input id="taskName" name="title" maxlength="90" placeholder="e.g. Finish the project proposal" required></div>
+      <div class="field"><label for="taskNote">Battle plan <span style="color:#83766d">(optional)</span></label><input id="taskNote" name="note" maxlength="120" placeholder="Add a little context"></div>
+      <div class="field-row">
+        <div class="field"><label for="taskPriority">Priority</label><select id="taskPriority" name="priority"><option value="high">High priority</option><option value="medium" selected>Medium</option><option value="low">Low priority</option></select></div>
+        <div class="field"><label for="taskDue">Deadline</label><select id="taskDue" name="due"><option value="today">Today</option><option value="tomorrow">Tomorrow</option><option value="week" selected>This week</option><option value="later">Later</option><option value="none">No deadline</option><option value="custom">Choose date…</option></select></div>
+      </div>
+      <div class="field" id="customDateField" hidden><label for="customDate">Due date</label><input id="customDate" name="customDate" type="date"></div>
+      <div class="modal-actions"><button class="button" id="cancelModal" type="button">Cancel</button><button class="button primary" type="submit">Add to stack</button></div>
+    </form>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
 </body>
 </html>
