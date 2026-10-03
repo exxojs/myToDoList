@@ -1,11 +1,5 @@
     (() => {
       const storageKey = "ancient-quest-board-v1";
-      const starterTasks = [
-        { id: "q1", title: "Send the campaign brief", note: "Get the first draft to the team", priority: "high", due: "today", done: false },
-        { id: "q2", title: "Clear the inbox backlog", note: "Close out the open threads", priority: "medium", due: "tomorrow", done: false },
-        { id: "q3", title: "Plan the week’s objectives", note: "Set up the next push", priority: "low", due: "week", done: false },
-        { id: "q4", title: "Take a proper lunch break", note: "Recharge mana before the next fight", priority: "low", due: "none", done: true }
-      ];
       const priorityNames = { high: "High", medium: "Medium", low: "Low" };
       const dueNames = { today: "Due today", tomorrow: "Tomorrow", week: "This week", later: "Later", none: "No deadline" };
       const quotes = ["A steady hand wins the longest game.", "Every cooldown ends. Every quest can begin.", "Victory belongs to those who keep moving."];
@@ -22,7 +16,7 @@
       function loadTasks() {
         try {
           const saved = localStorage.getItem(storageKey);
-          if (!saved) return starterTasks;
+          if (!saved) return [];
           const parsed = JSON.parse(saved);
           if (!Array.isArray(parsed) || parsed.some((task) => !task || typeof task.id !== "string" || typeof task.title !== "string")) {
             throw new Error("Saved quest data has an invalid format.");
@@ -30,7 +24,7 @@
           return parsed;
         } catch (error) {
           console.error("Could not load saved quests:", error);
-          return starterTasks;
+          return [];
         }
       }
       function saveTasks() {
